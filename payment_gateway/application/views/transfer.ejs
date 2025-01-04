@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Send Money</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    /* Background and font styling */
+    body {
+      background: linear-gradient(120deg, #f6d365, #fda085);
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .container {
+      background: #fff;
+      border-radius: 15px;
+      padding: 2rem;
+      max-width: 600px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+      color: #3f51b5;
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      text-shadow: 2px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    label {
+      font-weight: 500;
+      color: #3f51b5;
+    }
+
+    .form-control {
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s;
+    }
+
+    .form-control:focus {
+      border-color: #3f51b5;
+      box-shadow: 0 0 8px rgba(63, 81, 181, 0.5);
+    }
+
+    .btn {
+      border-radius: 20px;
+      font-size: 1rem;
+      padding: 0.5rem 1.5rem;
+      transition: all 0.3s;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+    }
+
+    .btn-primary {
+      background-color: #3f51b5;
+      border-color: #3f51b5;
+    }
+
+    .btn-primary:hover {
+      background-color: #2e3ca7;
+    }
+
+    .btn-secondary {
+      background-color: #03a9f4;
+      border-color: #03a9f4;
+    }
+
+    .btn-secondary:hover {
+      background-color: #0288d1;
+    }
+
+    .error-message {
+      color: #e74c3c;
+      font-size: 0.9rem;
+      margin-top: 0.3rem;
+      display: block;
+    }
+
+    .alert {
+      text-align: center;
+      font-weight: bold;
+    }
+  </style>
+
+  <script>
+    function validateForm() {
+      var senderAccountID = document.getElementById("senderAccountID").value;
+      var receiverAccountID = document.getElementById("receiverAccountID").value;
+
+      if (senderAccountID.length < 10) {
+        setTimeout(function () {
+          document.getElementById("senderAccountError").innerHTML = " ";
+        }, 700);
+        document.getElementById("senderAccountError").innerText = "Sender Account ID not found!";
+        return false;
+      } else {
+        document.getElementById("senderAccountError").innerText = "";
+      }
+
+      if (receiverAccountID.length < 10) {
+        setTimeout(function () {
+          document.getElementById("receiverAccountError").innerHTML = " ";
+        }, 700);
+        document.getElementById("receiverAccountError").innerText = "Recipient Account ID not found!";
+        return false;
+      } else {
+        document.getElementById("receiverAccountError").innerText = "";
+      }
+
+      return true;
+    }
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Send Money</h1>
+
+    <% if (errorMessage) { %>
+    <div class="alert alert-danger" role="alert">
+      <%= errorMessage %>
+    </div>
+    <% } %>
+
+    <form action="/transfer" method="POST" onsubmit="return validateForm()">
+      <div class="form-group">
+        <label for="senderAccountID">Sender Account ID:</label>
+        <input type="text" class="form-control" id="senderAccountID" name="senderAccountID"
+          placeholder="Enter the Sender Account ID" required>
+        <p id="senderAccountError" class="error-message"></p>
+      </div>
+
+      <div class="form-group">
+        <label for="receiverAccountID">Recipient Account ID:</label>
+        <input type="text" class="form-control" id="receiverAccountID" name="receiverAccountID"
+          placeholder="Enter the Recipient Account ID" required>
+        <p id="receiverAccountError" class="error-message"></p>
+      </div>
+
+      <div class="form-group">
+        <label for="senderCustomerID">Sender ID:</label>
+        <input type="text" class="form-control" id="senderCustomerID" name="senderCustomerID"
+          placeholder="Enter the Sender ID" required>
+      </div>
+
+      <div class="form-group">
+        <label for="receiverCustomerID">Recipient ID:</label>
+        <input type="text" class="form-control" id="receiverCustomerID" name="receiverCustomerID"
+          placeholder="Enter the Recipient ID" required>
+      </div>
+
+      <div class="form-group">
+        <label for="amount">Amount:</label>
+        <input type="number" class="form-control" id="amount" name="amount" placeholder="Enter amount" required>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Verify Password:</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password"
+          required>
+      </div>
+
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary">Send Money</button>
+        <a href="/customerHome" class="btn btn-secondary">Main Page</a>
+      </div>
+    </form>
+  </div>
+</body>
+
+</html>

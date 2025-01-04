@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to International Bank</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: url('https://jimdo-storage.freetls.fastly.net/image/92bb5ab2-ed46-47d8-8c76-fbbe238bd08d.jpg?format=pjpg&amp;quality=80,90&amp;auto=webp&amp;disable=upscale&amp;width=2560&amp;height=1707 2560w, https://jimdo-storage.freetls.fastly.net/image/92bb5ab2-ed46-47d8-8c76-fbbe238bd08d.jpg?format=pjpg&amp;quality=80,90&amp;auto=webp&amp;disable=upscale&amp;width=1920&amp;height=1280 1920w, https://jimdo-storage.freetls.fastly.net/image/92bb5ab2-ed46-47d8-8c76-fbbe238bd08d.jpg?format=pjpg&amp;quality=80,90&amp;auto=webp&amp;disable=upscale&amp;width=1600&amp;height=1067 1600w, https://jimdo-storage.freetls.fastly.net/image/92bb5ab2-ed46-47d8-8c76-fbbe238bd08d.jpg?format=pjpg&amp;quality=80,90&amp;auto=webp&amp;disable=upscale&amp;width=1440&amp;height=960 1440w, https://jimdo-storage.freetls.fastly.net/image/92bb5ab2-ed46-47d8-8c76-fbbe238bd08d.jpg?format=pjpg&amp;quality=80,90&amp;auto=webp&amp;disable=upscale&amp;width=1280&amp;height=854 1280w, https://jimdo-storage.freetls.fastly.net/image/92bb5ab2-ed46-47d8-8c76-fbbe238bd08d.jpg?format=pjpg&amp;quality=80,90&amp;auto=webp&amp;disable=upscale&amp;width=1024&amp;height=683 1024w, https://jimdo-storage.freetls.fastly.net/image/92bb5ab2-ed46-47d8-8c76-fbbe238bd08d.jpg?format=pjpg&amp;quality=80,90&amp;auto=webp&amp;disable=upscale&amp;width=800&amp;height=533 800w, https://jimdo-storage.freetls.fastly.net/image/92bb5ab2-ed46-47d8-8c76-fbbe238bd08d.jpg?format=pjpg&amp;quality=80,90&amp;auto=webp&amp;disable=upscale&amp;width=640&amp;height=427 640w, https://jimdo-storage.freetls.fastly.net/image/92bb5ab2-ed46-47d8-8c76-fbbe238bd08d.jpg?format=pjpg&amp;quality=80,90&amp;auto=webp&amp;disable=upscale&amp;width=480&amp;height=320 480w, https://jimdo-storage.freetls.fastly.net/image/92bb5ab2-ed46-47d8-8c76-fbbe238bd08d.jpg?format=pjpg&amp;quality=80,90&amp;auto=webp&amp;disable=upscale&amp;width=320&amp;height=213 320w, https://jimdo-storage.freetls.fastly.net/image/92bb5ab2-ed46-47d8-8c76-fbbe238bd08d.jpg?format=pjpg&amp;quality=80,90&amp;auto=webp&amp;disable=upscale&amp;width=160&amp;height=107 160w" alt="" loading="lazy') no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+    }
+
+    /* Add a subtle dark overlay over the background image for better readability */
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 1;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+      z-index: 2; /* Stack above the overlay */
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      color: #f4f4f4;
+    }
+
+    p {
+      font-size: 1.2rem;
+      font-weight: 300;
+      max-width: 600px;
+      margin: 0 auto;
+      color: #d4eef6;
+    }
+
+    .button-container {
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      z-index: 2; 
+    }
+
+    .button {
+      display: block;
+      padding: 14px 30px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: center;
+      border: none;
+      border-radius: 30px;
+      background-color: #e76f51;
+      color: #fff;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      width: 300px;
+    }
+
+    .button:hover {
+      background-color: #f4a261;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .footer {
+      position: absolute;
+      bottom: 20px;
+      font-size: 0.9rem;
+      color: #d4eef6;
+      text-align: center;
+      z-index: 2; /* Stack above the overlay */
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+
+      p {
+        font-size: 1rem;
+        padding: 0 20px;
+      }
+
+      .button {
+        width: 180px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Welcome to International Bank Transfer System</h1>
+    <p>Secure, Reliable, and Global Banking Solutions Tailored to Your Needs</p>
+  </header>
+
+  <div class="button-container">
+    <a href="/createBank" class="button">Bank Login/SignUp</a>
+    <a href="/signup" class="button">Customer Login/SignUp</a>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; <%= new Date().getFullYear() %> International Bank. All rights reserved.</p>
+  </footer>
+</body>
+</html>

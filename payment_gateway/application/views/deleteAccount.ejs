@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delete Account</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* General Background and Page Styling */
+    body {
+      background: linear-gradient(120deg, #f6d365, #fda085);
+      min-height: 100vh;
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      max-width: 600px;
+      width: 100%;
+    }
+
+    h1 {
+      color: #3f51b5;
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      text-shadow: 2px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      font-weight: 500;
+      color: #555;
+    }
+
+    .btn {
+      border-radius: 25px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s;
+    }
+
+    .btn-danger {
+      background-color: #f44336;
+      border-color: #f44336;
+    }
+
+    .btn-danger:hover {
+      background-color: #d32f2f;
+    }
+
+    .error-message {
+      color: red;
+      font-size: 0.9rem;
+    }
+
+    .alert {
+      margin-top: 1rem;
+      text-align: center;
+    }
+    
+    .form-control:focus {
+      box-shadow: 0 0 6px rgba(63, 81, 181, 0.5);
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 1.5rem;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+
+  <script>
+    function validateForm() {
+      var accountID = document.getElementById("accountID").value;
+
+      if (accountID.length < 10) {
+        setTimeout(function () {
+          document.getElementById("AccountError").innerHTML = " ";
+        }, 700);
+        document.getElementById("AccountError").innerText = "Account ID must be at least 10 characters long!";
+        return false;
+      } else {
+        document.getElementById("AccountError").innerText = "";
+      }
+      return true;
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Delete Account</h1>
+    <p class="text-center">Please confirm the deletion of the account by filling out the form below.</p>
+    
+    <form method="POST" action="/deleteAccount" onsubmit="return validateForm()">
+      <!-- Customer ID Field -->
+      <div class="form-group">
+        <label for="customerID">Customer ID:</label>
+        <input type="text" class="form-control" id="customerID" name="customerID" placeholder="Enter customer ID" required>
+      </div>
+      
+      <!-- Account ID Field -->
+      <div class="form-group">
+        <label for="accountID">Account ID:</label>
+        <input type="text" class="form-control" id="accountID" name="accountID" placeholder="Enter account ID" required>
+        <p id="AccountError" class="error-message"></p>
+      </div>
+      
+      <!-- Confirmation Field -->
+      <div class="form-group">
+        <label for="confirmation">Are you sure you want to delete the account? Type "YES" to confirm:</label>
+        <input type="text" class="form-control" id="confirmation" name="confirmation" placeholder="Type YES to confirm" required>
+      </div>
+      
+      <!-- Submit Button -->
+      <button type="submit" class="btn btn-danger btn-block">Delete Account</button>
+    </form>
+
+    <!-- Display Error Message -->
+    <% if (errorMessage) { %>
+      <div class="alert alert-danger" role="alert">
+        <%= errorMessage %>
+      </div>
+    <% } %>
+  </div>
+</body>
+</html>

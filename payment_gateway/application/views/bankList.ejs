@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      background: linear-gradient(120deg, #74ebd5, #ACB6E5);
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      max-width: 900px;
+      width: 100%;
+      padding: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #fff;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      font-weight: bold;
+      text-shadow: 2px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .card {
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+    }
+
+    .card-header {
+      background-color: #3f51b5;
+      color: #fff;
+      text-align: center;
+      font-size: 1.25rem;
+      font-weight: bold;
+      padding: 1rem;
+      border-bottom: none;
+    }
+
+    .card-body {
+      padding: 1.5rem;
+      font-size: 1.1rem;
+      background: #fff;
+    }
+
+    .card-body .card-text {
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+
+    .card-body .card-text strong {
+      color: #3f51b5;
+    }
+
+    .btn-container {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .btn {
+      border-radius: 25px;
+      font-weight: bold;
+      padding: 0.5rem 1rem;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+
+    .btn-primary {
+      background-color: #3f51b5;
+      border-color: #3f51b5;
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background-color: #2e3ca7;
+      transform: scale(1.05);
+    }
+
+    .btn-secondary {
+      background-color: #03a9f4;
+      border-color: #03a9f4;
+      color: #fff;
+    }
+
+    .btn-secondary:hover {
+      background-color: #0288d1;
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 768px) {
+      .card-body {
+        font-size: 1rem;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <!-- Header -->
+    <h1>My Profile</h1>
+    <div class="card mt-4">
+      <div class="card-header">
+        Bank Information
+      </div>
+      <!-- Card Body -->
+      <div class="card-body">
+        <p class="card-text"><strong>Bank Name:</strong> <%= bank.name %></p>
+        <p class="card-text"><strong>Bank ID:</strong> <%= bank.bankID %></p>
+        <p class="card-text"><strong>Bank Admin ID:</strong> <%= bank.bankAdminID %></p>
+        <p class="card-text"><strong>Country:</strong> <%= bank.country %></p>
+        <p class="card-text"><strong>Currency:</strong> <%= bank.currency %></p>
+        <p class="card-text"><strong>Reserves:</strong> <%= bank.reserves.toFixed(2) %></p>
+        <p class="card-text"><strong>Account IDs:</strong> <%= bank.accountIDs.join(', ') %></p>
+        <p class="card-text"><strong>Exchange Rate in Dollars:</strong> <%= bank.exchangeRate.toFixed(2) %></p>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="btn-container">
+      <a href="/showAccountsforBank" class="btn btn-primary">View Accounts</a>
+      <a href="/bankHome" class="btn btn-secondary">Main Page</a>
+    </div>
+  </div>
+</body>
+
+</html>

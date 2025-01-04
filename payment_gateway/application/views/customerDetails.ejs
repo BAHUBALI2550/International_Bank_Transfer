@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Customer Info</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background: linear-gradient(120deg, #84fab0, #8fd3f4);
+      background-attachment: fixed;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #bankInfoContainer {
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      max-width: 600px;
+      width: 100%;
+    }
+
+    h1 {
+      font-weight: bold;
+      padding-top: 1rem;
+      color: darkslateblue;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .card {
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn {
+      border-radius: 25px;
+      font-weight: bold;
+      margin-top: 1rem;
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+
+    .btn-primary {
+      background-color: #3f51b5;
+      border-color: #3f51b5;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: #2e3ca7;
+      transform: scale(1.05);
+    }
+
+    .button-container {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="bankInfoContainer" class="container">
+    <h1>Customer Info</h1>
+    <hr />
+    <div class="card mt-4">
+      <div class="card-body">
+        <p class="card-text"><strong>Customer ID:</strong>
+          <%= customer.customerID %>
+        </p>
+        <p class="card-text"><strong>Customer Name:</strong>
+          <%= customer.name %>
+        </p>
+        <p class="card-text"><strong>Customer Surname:</strong>
+          <%= customer.surname %>
+        </p>
+        <p class="card-text"><strong>Account ID's:</strong>
+          <%= customer.accountIDs.join(', ') %></p>
+      </div>
+    </div>
+    <!-- Log Out Button -->
+    <div class="button-container">
+      <form action="/logout" method="POST" style="display: inline-block;">
+        <button type="submit" class="btn btn-primary">Log Out</button>
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>

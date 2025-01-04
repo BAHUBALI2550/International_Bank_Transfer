@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      background: radial-gradient(circle, #e0c3fc, #8ec5fc);
+      background-attachment: fixed;
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .container {
+      max-width: 600px;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      padding: 2rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #3f51b5;
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: 1.5rem;
+      text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+    }
+
+    .form-group label {
+      font-weight: 500;
+      color: #3f51b5;
+    }
+
+    .form-group input {
+      border-radius: 5px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn {
+      border-radius: 25px;
+      font-weight: bold;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+
+    .btn-primary {
+      background-color: #3f51b5;
+      border-color: #3f51b5;
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background-color: #2e3ca7;
+      transform: scale(1.05);
+    }
+
+    .btn-secondary {
+      background-color: #03a9f4;
+      border-color: #03a9f4;
+      color: #fff;
+    }
+
+    .btn-secondary:hover {
+      background-color: #0288d1;
+      transform: scale(1.05);
+    }
+
+    .alert {
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Create Account</h1>
+    <hr />
+
+    <!-- Display error message if present -->
+    <% if (errorMessage) { %>
+      <div class="alert alert-danger" role="alert">
+        <%= errorMessage %>
+      </div>
+    <% } %>
+
+    <!-- Account creation form -->
+    <form action="/createAccount" method="POST">
+      <div class="form-group">
+        <label for="customerID">Verify Your ID:</label>
+        <input type="text" class="form-control" name="customerID" placeholder="Enter your Customer ID" required>
+      </div>
+
+      <div class="form-group">
+        <label for="bankID">Bank ID:</label>
+        <input type="text" class="form-control" name="bankID" placeholder="Enter your Bank ID" required>
+      </div>
+
+      <div class="form-group">
+        <label for="balance">Balance:</label>
+        <input type="text" class="form-control" name="balance" placeholder="Enter initial balance" required>
+      </div>
+
+      <div class="form-group">
+        <label for="currency">Currency:</label>
+        <input type="text" class="form-control" name="currency" placeholder="currency used" required>
+      </div>
+
+      <div class="d-flex justify-content-between mt-4">
+        <button type="submit" class="btn btn-primary">Create Account</button>
+        <a href="/customerHome" class="btn btn-secondary">Home Page</a>
+      </div>
+    </form>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

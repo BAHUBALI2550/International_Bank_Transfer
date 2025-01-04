@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Account List</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <!-- Google Font for Modern Typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- Styling -->
+  <style>
+    /* Full-Page Background */
+    body {
+      background: linear-gradient(45deg, #8360c3, #2ebf91);
+      color: #333;
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+
+    /* Page Title */
+    h1 {
+      font-size: 2.5rem;
+      color: #fff;
+      text-align: center;
+      text-shadow: 2px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Modern Cards for Accounts */
+    .account-card {
+      background: #fff;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .account-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Card Image */
+    .card-header {
+      height: 150px;
+      background: #6c63ff;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .card-header img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Card Content */
+    .card-body {
+      padding: 1.5rem;
+    }
+
+    .card-title {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .card-subtitle {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      color: #555;
+    }
+
+    .account-info span {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Buttons */
+    .btn {
+      border-radius: 25px;
+      transition: transform 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+    }
+
+    .btn-primary {
+      background: #50c878;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background: #45b06e;
+    }
+
+    .btn-danger {
+      background: #ff6f61;
+      border: none;
+    }
+
+    .btn-danger:hover {
+      background: #e45850;
+    }
+
+    .btn-warning {
+      background: #ffa726;
+      border: none;
+      color: #fff;
+    }
+
+    .btn-warning:hover {
+      background: #fb8c00;
+    }
+
+    /* No Accounts Message */
+    .no-accounts-message {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #fff;
+      text-shadow: 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    @media only screen and (max-width: 768px) {
+      .account-card {
+        margin-bottom: 1.5rem;
+      }
+    }
+  </style>
+
+  <!-- JavaScript -->
+  <script>
+    function copyTextToClipboard(text) {
+      const tempElement = document.createElement("textarea");
+      tempElement.value = text;
+      document.body.appendChild(tempElement);
+      tempElement.select();
+      document.execCommand("copy");
+      document.body.removeChild(tempElement);
+      alert("Copied to clipboard: " + text);
+    }
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <!-- Page Title -->
+    <h1>Account List</h1>
+
+    <% if (accounts && accounts.length> 0) { %>
+      <!-- Cards Container -->
+      <div class="row">
+        <% accounts.forEach((account)=> { %>
+          <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+            <div class="account-card">
+              <!-- Card Header with Image -->
+              <div class="card-header">
+                <!-- Placeholder Image -->
+                <img src="https://happay.com/blog/wp-content/uploads/sites/12/2022/09/baas-banking-as-a-service-.png"
+                  alt="Account Image">
+              </div>
+              <!-- Card Body -->
+              <div class="card-body">
+                <h5 class="card-title">Bank: <%= account.bankID %>
+                </h5>
+                <h6 class="card-subtitle mb-2 text-muted">Currency: <%= account.currency %>
+                </h6>
+                <div class="account-info">
+                  <span><strong>Account ID:</strong>
+                    <span class="copyable" onclick="copyTextToClipboard('<%= account.id %>')">
+                      <%= account.id %>
+                    </span>
+                  </span>
+                  <span><strong>Balance:</strong>
+                    <%= account.balance %>
+                  </span>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="mt-3">
+                  <a href="/transfer/<%= account.id %>?customerID=<%= customerID %>&accountID=<%= account.id %>"
+                    class="btn btn-primary btn-block">Account Activities</a>
+                  <a href="/deleteAccount" class="btn btn-danger btn-block">Delete</a>
+                  <a href="/updateBalance" class="btn btn-warning btn-block">Deposit/Withdraw</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% }) %>
+      </div>
+      <% } else { %>
+        <!-- No Accounts Found Message -->
+        <div class="no-accounts-message">
+          <h5>No accounts found for this customer.</h5>
+        </div>
+        <% } %>
+
+          <!-- Navigation Buttons -->
+          <div class="text-center mt-4">
+            <a href="/transfer" class="btn btn-primary btn-lg">Send Money</a>
+            <a href="/customerHome" class="btn btn-secondary btn-lg">Home</a>
+          </div>
+  </div>
+</body>
+
+</html>

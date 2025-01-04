@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bank Info</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Background and font styling */
+    body {
+      background: linear-gradient(120deg, #f6d365, #fda085);
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .container {
+      max-width: 800px;
+      padding: 2rem;
+    }
+
+    h1 {
+      color: #fff;
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      text-shadow: 2px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Card styling */
+    .info-card {
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .info-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .card-header {
+      background: #3f51b5;
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .card-header h5 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+
+    .card-body {
+      padding: 1.5rem;
+    }
+
+    .card-body p {
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+      color: #555;
+      font-weight: 500;
+    }
+
+    strong {
+      color: #3f51b5;
+    }
+
+    /* Footer button styling */
+    .btn-container {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .btn {
+      border-radius: 25px;
+      transition: all 0.3s;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      font-size: 1.2rem;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+    }
+
+    .btn-primary {
+      background-color: #3f51b5;
+      border-color: #3f51b5;
+    }
+
+    .btn-primary:hover {
+      background-color: #2e3ca7;
+    }
+
+    .btn-secondary {
+      background-color: #03a9f4;
+      border-color: #03a9f4;
+    }
+
+    .btn-secondary:hover {
+      background-color: #0288d1;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Bank Info</h1>
+    
+    <!-- Bank Info Card -->
+    <div class="info-card">
+      <div class="card-header">
+        <h5>Bank Details</h5>
+      </div>
+      <div class="card-body">
+        <p><strong>Bank Name:</strong> <%= bank.name %></p>
+        <p><strong>Bank ID:</strong> <%= bank.bankID %></p>
+        <p><strong>Bank Admin ID:</strong> <%= bank.bankAdminID %></p>
+        <p><strong>Country:</strong> <%= bank.country %></p>
+        <p><strong>Currency:</strong> <%= bank.currency %></p>
+        <p><strong>Reserves:</strong> <%= bank.reserves.toFixed(2) %></p>
+        <p><strong>Account IDs:</strong> <%= bank.accountIDs.join(', ') %></p>
+        <p><strong>Exchange Rate in Dollars:</strong> <%= bank.exchangeRate.toFixed(2) %></p>
+      </div>
+    </div>
+
+    <!-- Return to Main Page Button -->
+    <div class="btn-container">
+      <a href="/bankHome" class="btn btn-primary">Main Page</a>
+    </div>
+  </div>
+</body>
+
+</html>

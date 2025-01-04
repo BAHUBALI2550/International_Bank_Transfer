@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Profile</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* General Background and Page Styling */
+    body {
+      background: linear-gradient(120deg, #f6d365, #fda085);
+      min-height: 100vh;
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      max-width: 600px;
+      width: 100%;
+    }
+
+    h1 {
+      color: #3f51b5;
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      text-shadow: 2px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      font-weight: 500;
+      color: #555;
+    }
+
+    .btn {
+      border-radius: 25px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s;
+    }
+
+    .btn-primary {
+      background-color: #3f51b5;
+      border-color: #3f51b5;
+    }
+
+    .btn-primary:hover {
+      background-color: #2e3ca7;
+    }
+
+    .btn-secondary {
+      background-color: #03a9f4;
+      border-color: #03a9f4;
+    }
+
+    .btn-secondary:hover {
+      background-color: #0288d1;
+    }
+
+    .form-control:focus {
+      box-shadow: 0 0 6px rgba(63, 81, 181, 0.5);
+    }
+
+    #passwordError {
+      display: block;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 1.5rem;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Edit Profile</h1>
+    <form action="/editCustomerProfile" method="post" onsubmit="return validatePassword()">
+      <!-- Name Field -->
+      <div class="form-group">
+        <label for="customerName">Name:</label>
+        <input type="text" class="form-control" id="customerName" name="customerName" value="<%= customerName %>">
+      </div>
+
+      <!-- Surname Field -->
+      <div class="form-group">
+        <label for="customerSurname">Surname:</label>
+        <input type="text" class="form-control" id="customerSurname" name="customerSurname" value="<%= customerSurname %>">
+      </div>
+
+      <!-- Old Password Field -->
+      <div class="form-group">
+        <label for="oldPassword">Old Password:</label>
+        <input type="password" class="form-control" id="oldPassword" name="oldPassword" placeholder="Enter old password">
+      </div>
+
+      
+
+      <!-- New Password Field -->
+      <div class="form-group">
+        <label for="customerPassword">New Password:</label>
+        <input type="password" class="form-control" id="customerPassword" name="customerPassword" placeholder="Enter new password">
+        <small class="text-danger" id="passwordError"></small>
+      </div>
+      
+      <!-- New Password Confirmation Field -->
+      <div class="form-group">
+        <label for="confirmation">Confirm New Password:</label>
+        <input type="password" class="form-control" id="confirmation" placeholder="Confirm new password">
+      </div>
+
+      <!-- Update Button -->
+      <button type="submit" class="btn btn-primary btn-block">Update</button>
+    </form>
+
+    <!-- Back Button -->
+    <div class="text-center mt-3">
+      <a href="/customerHome" class="btn btn-secondary">Back</a>
+    </div>
+  </div>
+
+  <script>
+    function validatePassword() {
+      var newPassword = document.getElementById("customerPassword").value;
+      var confirmPassword = document.getElementById("confirmation").value;
+      var oldPassword = document.getElementById("oldPassword").value;
+      var passwordError = document.getElementById("passwordError");
+
+      if (newPassword === confirmPassword && oldPassword === "<%= customerPassword %>") {
+        passwordError.innerText = "";
+        return true;
+      }
+
+      if (newPassword !== confirmPassword) {
+        passwordError.innerText = "New passwords do not match.";
+      }
+
+      if (oldPassword !== "<%= customerPassword %>") {
+        passwordError.innerText = "You entered the wrong old password.";
+      }
+      return false;
+    }
+  </script>
+</body>
+</html>
