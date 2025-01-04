@@ -1,10 +1,10 @@
-# Blockchain Based Cross Border Payment System
+# Blockchain Based International Bank Transfer
 
-Cross Border Payment is a private blockchain application based on Hyperledger. This project aims to facilitate the tracking and processing of cross-border payments.
+This is a private blockchain application based on Hyperledger. This project aims to facilitate the tracking and processing of cross-border payments.
 
 ## Project Description
 
-This project is a blockchain application developed on the Hyperledger framework. It includes smart contracts used for tracking, validating, and processing cross-border payments. A network has been established for transactions between different banks, ensuring transparent monitoring of payment processes.
+This project is a blockchain application developed on the Hyperledger framework. It includes smart contracts used for tracking, validating, and processing international payments. A network has been established for transactions between different banks, ensuring transparent monitoring of payment processes.
 
 ## Installation
 
@@ -18,10 +18,10 @@ Requirements:
 
 ### Starting the Network and Running the Application
 
-1. Navigate to the `cbps-network` directory:
+1. Navigate to the `network` directory:
 
 ```bash
-cd cbps-network
+cd network
 ```
 
 2. Run the following command to start the network and create a channel:
@@ -33,13 +33,13 @@ cd cbps-network
 3. Deploy the chaincode by running the following command:
 
 ```bash
-./network.sh deployCC -c bankschannel -ccn bank -ccp ../crossBorderPayment/chaincode-go/ -ccl go -ccep "OR('Org1MSP.peer','Org2MSP.peer')"
+./network.sh deployCC -c bankschannel -ccn bank -ccp ../payment_gateway/chaincode/ -ccl go -ccep "OR('Org1MSP.peer','Org2MSP.peer')"
 ```
 
-4. Navigate to the `crossBorderPayment/application` directory:
+4. Navigate to the `payment_gatewayt/application` directory:
 
 ```bash
-cd ../crossBorderPayment/application
+cd ../payment_gateway/application
 ```
 
 5. Install the required dependencies using npm:
@@ -69,7 +69,7 @@ If there are no errors, the explorer interface will be accessible at `http://loc
 
 1. Modify the necessary files for the explorer:
 
-   - Take the name of the file in the `cbps-network/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/keystore` directory.
+   - Take the name of the file in the `network/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/keystore` directory.
    - Change the end of the `adminPrivateKey` value in the `explorer/cbps-network.json` file.
 
 2. Navigate to the `explorer` directory:
@@ -91,10 +91,10 @@ docker-compose up
 
 ### Stop and Clear Network
 
-1. Navigate to the `cbps-network` directory:
+1. Navigate to the `network` directory:
 
 ```bash
-cd cbps-network
+cd network
 ```
 
 2. Run the following command to shut down the network:
@@ -103,10 +103,10 @@ cd cbps-network
 ./network.sh down
 ```
 
-3. Navigate to the `crossBorderPayment/application` directory:
+3. Navigate to the `payment_gateway/application` directory:
 
 ```bash
-cd ../crossBorderPayment/application
+cd ../payment_gateway/application
 ```
 
 4. Delete the `wallet` and `node-modules` directories:
