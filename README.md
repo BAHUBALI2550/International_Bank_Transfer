@@ -62,7 +62,11 @@ node app.js
 ```
 If there are no errors, the explorer interface will be accessible at `http://localhost:3000`.
 
-![Bank and Customer LogIn/SignUp Page](images/mainpage.png)
+![Home Page](mainPage.png)
+
+![Bank LogIn/SignUp Page](bankLogin.png)
+
+![Customer LogIn/SignUp Page](customerLogin.png)
 
 
 ### Explorer Configuration
@@ -83,8 +87,6 @@ cd explorer
 ```bash
 docker-compose up
 ```
-
-![Explorer](images/Exploerer_mainpage.png)
 
 
 4. If there are no errors, the explorer interface will be accessible at `http://localhost:8080`.
