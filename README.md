@@ -62,7 +62,7 @@ node app.js
 ```
 If there are no errors, the explorer interface will be accessible at `http://localhost:3000`.
 
-![Home Page](mainPage.png)
+![Main Page](1Page.png)
 
 ![Bank LogIn/SignUp Page](bankLogin.png)
 
